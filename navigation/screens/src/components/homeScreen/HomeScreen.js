@@ -4,8 +4,13 @@ import { View, Text, StyleSheet, Alert } from "react-native";
 import PresentationalComponent from "../PresentationalComponent";
 import { useRoute } from "@react-navigation/native";
 import TestAPI from "../../../../API/TestAPI";
-import data from "./../../../../../config";
 
+const {
+  ip,
+  dbUser,
+  dbname,
+  dbpassword,
+} = require("./../../../../../config");
 export default function HomeScreen({ navigation }) {
   const [message, setMessage] = useState("What is this page?");
   const route = useRoute();
@@ -17,10 +22,10 @@ export default function HomeScreen({ navigation }) {
     // Sử dụng customData ở đây
     dataScreen = customData;
   }
-  const updateMessage = () => {
-    setMessage("Home screen");
-    // Alert.alert("Đây là home screen") 
-  };
+  // const updateMessage = () => {
+  //   setMessage("Home screen");
+  //   // Alert.alert("Đây là home screen") 
+  // };
   // console.log(TestAPI);
   function testAPI() {
     fetch(`http://` + data.ip + `/Test_api_02`)
@@ -34,10 +39,9 @@ export default function HomeScreen({ navigation }) {
   }
   return (
     <View style={styles.container}>
-      <Text>Bạn vừa quay trở về từ trang: {dataScreen}</Text>
-      <Text onPress={testAPI}>Click vào đây để lấy dữ liệu </Text>
+      {/* <Text>Bạn vừa quay trở về từ trang: {dataScreen}</Text>
+      <Text onPress={testAPI}>Click vào đây để lấy dữ liệu </Text> */}
       <Text>{dataAPI}</Text>
-
       <TestAPI />
     </View>
   );
